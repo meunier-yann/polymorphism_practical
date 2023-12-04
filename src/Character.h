@@ -6,6 +6,8 @@ class Character{
   public:
     Character();
     void Accelerate();
+    void Break();
+
     inline float speed(){
       return speed_;
     }
