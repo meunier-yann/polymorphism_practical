@@ -1,4 +1,3 @@
-add_executable(main
-  main.cpp
-  Character.cpp
-  )
+set(SOURCE_FILES main.cpp Character.cpp)
+
+add_executable(main ${SOURCE_FILES})
