@@ -7,6 +7,7 @@ class Character{
     float speed_;
     float max_speed_;
     Character();
+    void Accelerate();
 };
 
 
