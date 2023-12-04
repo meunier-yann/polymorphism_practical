@@ -5,6 +5,7 @@
 class Character{
   public:
     Character();
+    ~Character() = default;
     void Accelerate();
     void Break();
 
