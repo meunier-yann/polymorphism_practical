@@ -8,7 +8,7 @@ void test_break();
 
 int main (){
   // test_create_character();
-  // test_accelerate();
+  test_accelerate();
   test_break();
   return EXIT_SUCCESS;
 }
