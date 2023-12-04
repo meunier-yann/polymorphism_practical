@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Character.h"
+#include <string>
 
 void test_create_character();
 void test_accelerate();

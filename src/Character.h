@@ -1,11 +1,12 @@
 #ifndef CHARACTER_H_
 #define CHARACTER_H_
 
+#include <string>
 
 class Character{
   public:
     Character();
-    ~Character() = default;
+    virtual ~Character() = default;
     void Accelerate();
     void Break();
     virtual std::string WhatAmI() const = 0;
