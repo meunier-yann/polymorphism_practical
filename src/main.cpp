@@ -1,19 +1,23 @@
 #include <iostream>
 #include "Character.h"
 #include "Mario.h"
+#include "Yoshi.h"
 #include <string>
+
 
 void test_create_character();
 void test_accelerate();
 void test_break();
 void test_Mario();
+void test_Yoshi();
 
 
 int main (){
   // test_create_character();
   // test_accelerate();
   // test_break();
-  test_Mario();
+  //test_Mario();
+  test_Yoshi();
   return EXIT_SUCCESS;
 }
 
@@ -44,4 +48,9 @@ int main (){
 void test_Mario(){
   Mario m;
   std::cout << m.WhatAmI() << m.max_speed() << std::endl;
+}
+
+void test_Yoshi(){
+  Yoshi y;
+  std::cout << y.WhatAmI() << y.max_speed() << std::endl;
 }
