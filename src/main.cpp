@@ -13,13 +13,13 @@ int main (){
 
 void test_create_character(){
   Character s;
-  std::cout << " max speed de: " << s.max_speed_ << " et speed: " << s.speed_ << std::endl;
+  std::cout << " max speed de: " << s.max_speed() << " et speed: " << s.speed()<< std::endl;
 }
 
 void test_accelerate(){
   Character s;
   for (int i = 0; i < 12; i++) {
     s.Accelerate();
-    std::cout << "Vitesse de: " << s.speed_ << std::endl;
+    std::cout << "Vitesse de: " << s.speed() << std::endl;
   }
 }

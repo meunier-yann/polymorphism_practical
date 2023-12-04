@@ -4,10 +4,17 @@
 
 class Character{
   public:
-    float speed_;
-    float max_speed_;
     Character();
     void Accelerate();
+    inline float speed(){
+      return speed_;
+    }
+    inline float max_speed(){
+      return max_speed_;
+    }
+  protected:
+    float speed_;
+    float max_speed_;
 };
 
 
