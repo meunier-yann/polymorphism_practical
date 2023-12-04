@@ -8,6 +8,7 @@ class Character{
     ~Character() = default;
     void Accelerate();
     void Break();
+    virtual std::string WhatAmI() const = 0;
 
     inline float speed() const{
       return speed_;
