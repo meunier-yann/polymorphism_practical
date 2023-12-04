@@ -1,0 +1,5 @@
+2) Add a pure virtual function member. Add the following declaration to your class Character:
+  ``virtual std::string WhatAmI() const = 0;``
+  Explain what happens at compile-time
+
+- At compile time, the class cannot use its constructor because it is now an abstract class :(
