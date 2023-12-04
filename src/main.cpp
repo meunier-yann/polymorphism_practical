@@ -53,4 +53,7 @@ void test_Mario(){
 void test_Yoshi(){
   Yoshi y;
   std::cout << y.WhatAmI() << y.max_speed() << std::endl;
+  y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();
+  std::cout << y.speed()<< std::endl;
+
 }

@@ -7,7 +7,7 @@ class Character{
   public:
     Character();
     virtual ~Character() = default;
-    void Accelerate();
+    virtual void Accelerate();
     void Break();
     virtual std::string WhatAmI() const = 0;
 
