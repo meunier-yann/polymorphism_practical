@@ -101,4 +101,8 @@ void test_race(){
   }
   std::cout << "Le gagnant est " << gagnant <<  '\n';
 
+  for (const auto& racer : racers) {
+   delete racer;
+ }
+ 
 }
