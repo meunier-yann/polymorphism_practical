@@ -196,8 +196,8 @@ void advanced_race(){
         gagnant = racer->WhatAmI();
         longest_distance = racer->speed();
       }
-
     }
+    sleep(2);
   } std::cout << "A l'issu de ces tours, le gagnant est " << gagnant <<  '\n';
 
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
@@ -206,7 +206,7 @@ void advanced_race(){
 }
 
 void random_event(Character* ptr, int i){
-  srand (time(NULL)-i-int(ptr->WhatAmI()[0]));
+  srand (time(NULL)-i-int(ptr->WhatAmI()[0])); //on fait en sorte que chq perso ait son propre random_event à chq tour
   int prob = rand() % 2;
   std::cout << prob << std::endl;
   if (prob == 0) {
