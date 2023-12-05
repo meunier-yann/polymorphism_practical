@@ -68,7 +68,7 @@ void test_race(){
   float vitesse = 0;
   std::string gagnant = "";
 
-  
+
   std::cout << "Méthode avec itérateurs" << std::endl;
   for (int i = 1; i< 4; ++i){
     for (auto it = begin (racers); it != end (racers); ++it) {
@@ -82,7 +82,23 @@ void test_race(){
 
     }
   }
+  std::cout << "Le gagnant est " << gagnant <<  '\n';
 
+  std::cout  << std::endl;
+  vitesse = 0.0; //reset de vitesse entre les courses
+  std::cout << "Méthode range-based" << std::endl;
+  for (int i = 1; i< 4; ++i){
+     for (const auto& racer : racers) {
+      racer->Accelerate ();
+      std::cout << "Après " << i << " tour(s), la vitesse de " << racer->WhatAmI() << " est de "
+                                                               << racer->speed() << std::endl;
+      if (racer->speed() > vitesse) {
+        gagnant = racer->WhatAmI();
+        vitesse = racer->speed();
+      }
+
+    }
+  }
   std::cout << "Le gagnant est " << gagnant <<  '\n';
 
 }
