@@ -20,6 +20,7 @@ void test_traveled_distance();
 void test_refresh_traveled_distance();
 void test_randomness();
 void advanced_race();
+void random_event(Character* ptr, int i);
 
 
 
@@ -37,8 +38,8 @@ int main (){
   // test_crests();
 
   //BONUS
-  test_traveled_distance();
-  test_refresh_traveled_distance();
+  // test_traveled_distance();
+  // test_refresh_traveled_distance();
   advanced_race();
   return EXIT_SUCCESS;
 }
@@ -184,9 +185,10 @@ void advanced_race(){
   float longest_distance = 0.0;
   std::string gagnant = "";
 
-  for (int i = 1; i< 4; ++i){
+
+  for (int i = 1; i< 11; ++i){
      for (const auto& racer : racers) { //range-based
-      racer->Accelerate ();
+      random_event(racer, i);
       racer->refresh_traveled_ditance();
       std::cout << "Après " << i << " tour(s), la vitesse de " << racer->WhatAmI() << " est de "
                                 << racer->speed() << ", il a parcouru " << racer->traveled_ditance() << "m." << std::endl;
@@ -200,5 +202,17 @@ void advanced_race(){
 
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
     delete racer;
+  }
+}
+
+void random_event(Character* ptr, int i){
+  srand (time(NULL)-i-int(ptr->WhatAmI()[0]));
+  int prob = rand() % 2;
+  std::cout << prob << std::endl;
+  if (prob == 0) {
+    ptr->Accelerate ();
+  }
+  else {
+    ptr->Break ();
   }
 }
