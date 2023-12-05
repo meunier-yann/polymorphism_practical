@@ -22,9 +22,13 @@ class Character{
     inline float max_speed() const{
       return max_speed_;
     }
+    inline float traveled_ditance() const{
+      return max_speed_;
+    }
   protected:
     float speed_;
     float max_speed_;
+    float traveled_ditance_;
 };
 
 
