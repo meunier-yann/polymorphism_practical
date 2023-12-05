@@ -9,7 +9,7 @@ class Yoshi : public Character{
   public:
     Yoshi(int nb_crests);
     Yoshi();
-    ~Yoshi() = default;
+    ~Yoshi();
     std::string WhatAmI() const override;
     void Accelerate() override;
 

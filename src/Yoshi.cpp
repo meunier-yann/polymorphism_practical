@@ -27,3 +27,7 @@ Yoshi::Yoshi() :
   Character(){
   nb_crests_ = new int {1};
 }
+
+Yoshi::~Yoshi(){
+  delete nb_crests_;
+}
