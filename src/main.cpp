@@ -112,11 +112,9 @@ void test_crests(){
   std::vector<Yoshi*> yoshis;
   for (int i = 1; i < 6; ++i) {
     yoshis.push_back(new Yoshi(i));
-    std::cout << yoshis[i-1]->WhatAmI() << " " << i << " a " << *yoshis[i-1]->nb_crests()
-                                  << " crête(s)." << std::endl;
+    std::cout << "Yoshi " << i << " is " << yoshis[i-1]->WhatAmI() << std::endl;
   }
-  std::cout << "Yoshi de base a " << *Yoshi().nb_crests()
-                                << " crête(s)." << std::endl;
+  std::cout << "Default Yoshi is  " << Yoshi().WhatAmI() << std::endl;
 
   for (const auto& yoshi : yoshis) {
     delete yoshi;
