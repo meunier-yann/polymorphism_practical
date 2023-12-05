@@ -7,8 +7,13 @@
 
 class Mario : public Character{
   public:
+    Mario(const Mario&) = delete;
+    Mario(Mario&&) = delete;
+    Mario& operator=(const Mario&) = delete;
+    Mario& operator=(Mario&&) = delete;
+
     Mario() = default;
-    ~Mario() = default;
+    virtual ~Mario() = default;
     std::string WhatAmI() const override;
 };
 

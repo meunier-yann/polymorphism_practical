@@ -5,6 +5,11 @@
 
 class Character{
   public:
+    Character(const Character&) = delete;
+    Character(Character&&) = delete;
+    Character& operator=(const Character&) = delete;
+    Character& operator=(Character&&) = delete;
+
     Character();
     virtual ~Character() = default;
     virtual void Accelerate();

@@ -7,9 +7,14 @@
 
 class Yoshi : public Character{
   public:
+    Yoshi(const Yoshi&) = delete;
+    Yoshi(Yoshi&&) = delete;
+    Yoshi& operator=(const Yoshi&) = delete;
+    Yoshi& operator=(Yoshi&&) = delete;
+
     Yoshi(int nb_crests);
     Yoshi();
-    ~Yoshi();
+    virtual ~Yoshi();
     std::string WhatAmI() const override;
     void Accelerate() override;
 
