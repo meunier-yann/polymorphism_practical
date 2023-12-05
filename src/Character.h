@@ -30,6 +30,10 @@ class Character{
     inline void set_traveled_ditance(float td){
        traveled_ditance_ = td;
     }
+
+    inline void refresh_traveled_ditance(){
+       traveled_ditance_ += speed_;
+    }
   protected:
     float speed_;
     float max_speed_;

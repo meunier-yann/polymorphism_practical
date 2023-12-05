@@ -16,6 +16,7 @@ void test_crests();
 
 //BONUS
 void test_traveled_distance();
+void test_refresh_traveled_distance();
 
 
 int main (){
@@ -33,6 +34,7 @@ int main (){
 
   //BONUS
   test_traveled_distance();
+  test_refresh_traveled_distance();
   return EXIT_SUCCESS;
 }
 
@@ -141,5 +143,13 @@ void test_traveled_distance(){
   Yoshi y;
   std::cout << y.traveled_ditance() << std::endl;
   y.set_traveled_ditance(5.0);
+  std::cout << y.traveled_ditance() << std::endl;
+}
+
+void test_refresh_traveled_distance(){
+  Yoshi y;
+  std::cout << y.traveled_ditance() << std::endl;
+  y.Accelerate();
+  y.refresh_traveled_ditance();
   std::cout << y.traveled_ditance() << std::endl;
 }
