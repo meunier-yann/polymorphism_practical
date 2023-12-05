@@ -7,10 +7,18 @@
 
 class Yoshi : public Character{
   public:
-    Yoshi() = default;
+    Yoshi(int nb_crests);
+    Yoshi();
     ~Yoshi() = default;
     std::string WhatAmI() const override;
     void Accelerate() override;
+
+    inline int* nb_crests() const{
+      return nb_crests_;
+    }
+
+  protected:
+    int* nb_crests_;
 };
 
 

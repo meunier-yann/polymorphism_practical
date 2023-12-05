@@ -15,3 +15,15 @@ void Yoshi::Accelerate(){
     speed_ = max_speed_;
   }
 }
+
+
+Yoshi::Yoshi(int nb_crests) :
+  Character(){
+  nb_crests_ = new int {nb_crests};
+}
+
+
+Yoshi::Yoshi() :
+  Character(){
+  nb_crests_ = new int {1};
+}

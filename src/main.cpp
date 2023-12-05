@@ -12,6 +12,7 @@ void test_break();
 void test_Mario();
 void test_Yoshi();
 void test_race();
+void test_crests();
 
 
 int main (){
@@ -20,7 +21,8 @@ int main (){
   // test_break();
   //test_Mario();
   //test_Yoshi();
-  test_race();
+  //test_race();
+  test_crests();
   return EXIT_SUCCESS;
 }
 
@@ -104,5 +106,19 @@ void test_race(){
   for (const auto& racer : racers) {
    delete racer;
  }
- 
+}
+
+void test_crests(){
+  std::vector<Yoshi*> yoshis;
+  for (int i = 1; i < 6; ++i) {
+    yoshis.push_back(new Yoshi(i));
+    std::cout << yoshis[i-1]->WhatAmI() << " " << i << " a " << *yoshis[i-1]->nb_crests()
+                                  << " crête(s)." << std::endl;
+  }
+  std::cout << "Yoshi de base a " << *Yoshi().nb_crests()
+                                << " crête(s)." << std::endl;
+
+  for (const auto& yoshi : yoshis) {
+    delete yoshi;
+  }
 }
