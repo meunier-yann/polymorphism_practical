@@ -16,12 +16,16 @@ void test_crests();
 
 
 int main (){
+  //Les fonctions suivantes ne marchent plus suite au changement de Character en classe abstracte :/
+  //On pourrait les adapter en remplaçant Character par Yoshi ou Mario
   // test_create_character();
   // test_accelerate();
   // test_break();
-  //test_Mario();
-  //test_Yoshi();
-  //test_race();
+
+  //Les fonctions suivantes marchent :)
+  test_Mario();
+  test_Yoshi();
+  test_race();
   test_crests();
   return EXIT_SUCCESS;
 }
@@ -50,20 +54,24 @@ int main (){
 //   }
 // }
 
-void test_Mario(){
+void test_Mario(){ //On test le constructeur de Mario
   Mario m;
-  std::cout << m.WhatAmI() << m.max_speed() << std::endl;
+  std::cout << "Je suis " << m.WhatAmI() << " avec une vitesse de " << m.max_speed() << std::endl;
 }
 
-void test_Yoshi(){
+void test_Yoshi(){ //On test le constructeur de Yoshi et ses spécificités
   Yoshi y;
-  std::cout << y.WhatAmI() << y.max_speed() << std::endl;
-  y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();
-  std::cout << y.speed()<< std::endl;
+  std::cout << "Je suis " << y.WhatAmI() << " avec une vitesse de " << y.max_speed() << std::endl;
+  y.Accelerate();y.Accelerate();
+  std::cout <<"Après 2 accélérations Yoshi a une vitesse de " << y.speed()<< std::endl;
+  y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate();y.Accelerate(); //test du respect de max_speed_
+  std::cout <<"Après 7 accélérations au total Yoshi a une vitesse de " << y.speed()<< std::endl;
+  y.Break(); y.Break();
+  std::cout <<"Après 2 freinages, Yoshi a une vitesse de " << y.speed()<< std::endl;
 }
 
-void test_race(){
-  std::vector<Character*> racers;
+void test_race(){ //On va faire une comparaison de vitesse entre Mario et Yoshi pendant 3 tours
+  std::vector<Character*> racers; //Ce sont des ptr pour permettre de garder les spécificités des sous-classes
   racers.push_back(new Yoshi);
   racers.push_back(new Mario);
 
@@ -73,11 +81,11 @@ void test_race(){
 
   std::cout << "Méthode avec itérateurs" << std::endl;
   for (int i = 1; i< 4; ++i){
-    for (auto it = begin (racers); it != end (racers); ++it) {
+    for (auto it = begin (racers); it != end (racers); ++it) { //iterators
       (*it)->Accelerate ();
       std::cout << "Après " << i << " tour(s), la vitesse de " << (*it)->WhatAmI() << " est de "
                                                                << (*it)->speed() << std::endl;
-      if ((*it)->speed() > vitesse) {
+      if ((*it)->speed() > vitesse) { //le gagnant sera celui ayant atteint la vitesse la plus grande
         gagnant = (*it)->WhatAmI();
         vitesse = (*it)->speed();
       }
@@ -90,7 +98,7 @@ void test_race(){
   vitesse = 0.0; //reset de vitesse entre les courses
   std::cout << "Méthode range-based" << std::endl;
   for (int i = 1; i< 4; ++i){
-     for (const auto& racer : racers) {
+     for (const auto& racer : racers) { //range-based
       racer->Accelerate ();
       std::cout << "Après " << i << " tour(s), la vitesse de " << racer->WhatAmI() << " est de "
                                                                << racer->speed() << std::endl;
@@ -103,12 +111,13 @@ void test_race(){
   }
   std::cout << "Le gagnant est " << gagnant <<  '\n';
 
-  for (const auto& racer : racers) {
+  for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
    delete racer;
  }
+
 }
 
-void test_crests(){
+void test_crests(){ //On va vérifier si les Yoshis se créent avec le bon nombre de cretes
   std::vector<Yoshi*> yoshis;
   for (int i = 1; i < 6; ++i) {
     yoshis.push_back(new Yoshi(i));
@@ -116,7 +125,7 @@ void test_crests(){
   }
   std::cout << "Default Yoshi is  " << Yoshi().WhatAmI() << std::endl;
 
-  for (const auto& yoshi : yoshis) {
+  for (const auto& yoshi : yoshis) { //on delete les pointeurs pour ne pas avoir de leaks
     delete yoshi;
   }
 }

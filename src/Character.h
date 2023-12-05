@@ -13,7 +13,7 @@ class Character{
     Character();
     virtual ~Character() = default;
     virtual void Accelerate();
-    void Break();
+    virtual void Break();
     virtual std::string WhatAmI() const = 0;
 
     inline float speed() const{

@@ -15,10 +15,10 @@ class Yoshi : public Character{
     Yoshi(int nb_crests);
     Yoshi();
     virtual ~Yoshi();
-    std::string WhatAmI() const override;
-    void Accelerate() override;
+    std::string WhatAmI() const override; //on override WhatAmI()
+    void Accelerate() override; //on override Accelerate()
 
-    inline int* nb_crests() const{
+    inline int* nb_crests() const{ //on laisse l'utilisateur accéder au nb de crete plus facilement
       return nb_crests_;
     }
 

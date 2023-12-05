@@ -15,7 +15,7 @@ void Character::Accelerate(){
 
 
 void Character::Break(){
-  if (speed_ > 0.0){
+  if (speed_ - 1  >= 0.0){ //on pose une condition pour que la vitesse ne soit jamais nulle
     --speed_;
   }
 }

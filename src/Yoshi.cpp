@@ -2,7 +2,7 @@
 #include <string>
 
 
-std::string Yoshi::WhatAmI() const {
+std::string Yoshi::WhatAmI() const { //on override WhatAmI()
   return std::to_string(*nb_crests_) + " crested Yoshi";
 }
 
