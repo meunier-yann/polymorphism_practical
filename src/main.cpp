@@ -6,6 +6,7 @@
 #include <vector>
 #include <time.h>
 #include<unistd.h>
+//#include<windows.h>
 
 void test_create_character();
 void test_accelerate();
@@ -185,7 +186,12 @@ void advanced_race(){
   float longest_distance = 0.0;
   std::string gagnant = "";
 
-
+  std::cout << "Les coureurs sont:" << std::endl;
+  for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
+    std::cout << racer->WhatAmI() << std::endl;
+  }
+  std::cout << "----------------------------------------------" << std::endl;
+  sleep(3);
   for (int i = 1; i< 11; ++i){
      for (const auto& racer : racers) { //range-based
       random_event(racer, i);
@@ -197,7 +203,8 @@ void advanced_race(){
         longest_distance = racer->speed();
       }
     }
-    sleep(2);
+    sleep(3);
+    std::cout << "----------------------------------------------" << std::endl;
   } std::cout << "A l'issu de ces tours, le gagnant est " << gagnant <<  '\n';
 
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
@@ -208,7 +215,6 @@ void advanced_race(){
 void random_event(Character* ptr, int i){
   srand (time(NULL)-i-int(ptr->WhatAmI()[0])); //on fait en sorte que chq perso ait son propre random_event à chq tour
   int prob = rand() % 2;
-  std::cout << prob << std::endl;
   if (prob == 0) {
     ptr->Accelerate ();
   }
