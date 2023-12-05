@@ -4,6 +4,7 @@
 #include "Yoshi.h"
 #include <string>
 #include <vector>
+#include <time.h>
 
 
 void test_create_character();
@@ -17,6 +18,7 @@ void test_crests();
 //BONUS
 void test_traveled_distance();
 void test_refresh_traveled_distance();
+void test_randomness();
 
 
 int main (){
@@ -35,6 +37,7 @@ int main (){
   //BONUS
   test_traveled_distance();
   test_refresh_traveled_distance();
+  test_randomness();
   return EXIT_SUCCESS;
 }
 
@@ -152,4 +155,18 @@ void test_refresh_traveled_distance(){
   y.Accelerate();
   y.refresh_traveled_ditance();
   std::cout << y.traveled_ditance() << std::endl;
+}
+
+void test_randomness(){
+  srand (time(NULL));
+  std::cout << rand() % 2;
+  srand (time(NULL)-1);
+  std::cout << rand() % 2;
+  srand (time(NULL)-3);
+  std::cout << rand() % 2;
+  srand (time(NULL)-3);
+  std::cout << rand() % 2;
+  srand (time(NULL)-3);
+  std::cout << rand() % 2;
+  std::cout << std::endl;
 }
