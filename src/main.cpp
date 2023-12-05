@@ -14,6 +14,9 @@ void test_Yoshi();
 void test_race();
 void test_crests();
 
+//BONUS
+void test_traveled_distance();
+
 
 int main (){
   //Les fonctions suivantes ne marchent plus suite au changement de Character en classe abstracte :/
@@ -23,10 +26,13 @@ int main (){
   // test_break();
 
   //Les fonctions suivantes marchent :)
-  test_Mario();
-  test_Yoshi();
-  test_race();
-  test_crests();
+  // test_Mario();
+  // test_Yoshi();
+  // test_race();
+  // test_crests();
+
+  //BONUS
+  test_traveled_distance();
   return EXIT_SUCCESS;
 }
 
@@ -128,4 +134,12 @@ void test_crests(){ //On va vérifier si les Yoshis se créent avec le bon nombr
   for (const auto& yoshi : yoshis) { //on delete les pointeurs pour ne pas avoir de leaks
     delete yoshi;
   }
+}
+
+//BONUS
+void test_traveled_distance(){
+  Yoshi y;
+  std::cout << y.traveled_ditance() << std::endl;
+  y.set_traveled_ditance(5.0);
+  std::cout << y.traveled_ditance() << std::endl;
 }

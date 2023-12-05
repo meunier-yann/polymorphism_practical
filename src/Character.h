@@ -22,13 +22,18 @@ class Character{
     inline float max_speed() const{
       return max_speed_;
     }
+
     inline float traveled_ditance() const{
-      return max_speed_;
+      return traveled_ditance_;
+    }
+
+    inline void set_traveled_ditance(float td){
+       traveled_ditance_ = td;
     }
   protected:
     float speed_;
     float max_speed_;
-    float traveled_ditance_;
+    float traveled_ditance_ = 0.0;
 };
 
 
