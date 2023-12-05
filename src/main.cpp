@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <time.h>
-
+#include<unistd.h>
 
 void test_create_character();
 void test_accelerate();
@@ -19,6 +19,8 @@ void test_crests();
 void test_traveled_distance();
 void test_refresh_traveled_distance();
 void test_randomness();
+void advanced_race();
+
 
 
 int main (){
@@ -37,7 +39,7 @@ int main (){
   //BONUS
   test_traveled_distance();
   test_refresh_traveled_distance();
-  test_randomness();
+  advanced_race();
   return EXIT_SUCCESS;
 }
 
@@ -169,4 +171,34 @@ void test_randomness(){
   srand (time(NULL)-3);
   std::cout << rand() % 2;
   std::cout << std::endl;
+}
+
+void advanced_race(){
+  Yoshi* y1 = new Yoshi;
+  Yoshi* y2 = new Yoshi (2);
+  Mario* m1 = new Mario();
+  std::vector<Character*> racers; //Ce sont des ptr pour permettre de garder les spécificités des sous-classes
+  racers.push_back(y1);
+  racers.push_back(y2);
+  racers.push_back(m1);
+  float longest_distance = 0.0;
+  std::string gagnant = "";
+
+  for (int i = 1; i< 4; ++i){
+     for (const auto& racer : racers) { //range-based
+      racer->Accelerate ();
+      racer->refresh_traveled_ditance();
+      std::cout << "Après " << i << " tour(s), la vitesse de " << racer->WhatAmI() << " est de "
+                                << racer->speed() << ", il a parcouru " << racer->traveled_ditance() << "m." << std::endl;
+      if (racer->speed() > longest_distance) {
+        gagnant = racer->WhatAmI();
+        longest_distance = racer->speed();
+      }
+
+    }
+  } std::cout << "A l'issu de ces tours, le gagnant est " << gagnant <<  '\n';
+
+  for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
+    delete racer;
+  }
 }
