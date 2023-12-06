@@ -191,6 +191,7 @@ void advanced_race(){
   float longest_distance = 0.0;
   std::string gagnant = "";
   int nb_secondes = 5;
+  int nb_tours = 10;
 
   std::cout << "Les coureurs sont:" << std::endl;
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
@@ -198,7 +199,7 @@ void advanced_race(){
   }
   std::cout << "----------------------------------------------" << std::endl;
   sleep(nb_secondes);
-  for (int i = 1; i< 11; ++i){
+  for (int i = 1; i< nb_tours+1; ++i){
      for (const auto& racer : racers) { //range-based
       random_event(racer, i, Players);
 
@@ -215,7 +216,7 @@ void advanced_race(){
     }
     sleep(3);
     std::cout << "----------------------------------------------" << std::endl;
-  } std::cout << "A l'issu de ces tours, le gagnant est " << gagnant <<  '\n';
+  } std::cout << "A l'issu de ces " << nb_tours*nb_secondes << "secondes de course, le gagnant est " << gagnant <<  '\n';
 
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
     delete racer;
