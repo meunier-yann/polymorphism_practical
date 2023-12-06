@@ -8,7 +8,7 @@ Character::Character(){
 
 
 void Character::Accelerate(){
-  if (speed_ < max_speed_){
+  if (speed_ + 1 <= max_speed_){
     ++speed_;
   }
 }
