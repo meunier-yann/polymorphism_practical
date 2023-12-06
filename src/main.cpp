@@ -190,19 +190,24 @@ void advanced_race(){
   racers.push_back(m1);
   float longest_distance = 0.0;
   std::string gagnant = "";
+  int nb_secondes = 5;
 
   std::cout << "Les coureurs sont:" << std::endl;
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
     std::cout << racer->WhatAmI() << std::endl;
   }
   std::cout << "----------------------------------------------" << std::endl;
-  sleep(3);
+  sleep(nb_secondes);
   for (int i = 1; i< 11; ++i){
      for (const auto& racer : racers) { //range-based
       random_event(racer, i, Players);
-      racer->refresh_traveled_ditance();
-      std::cout << "Après " << i << " tour(s), la vitesse de " << racer->WhatAmI() << " est de "
-                                << racer->speed() << ", il a parcouru " << racer->traveled_ditance() << "m." << std::endl;
+
+        for (int j = 0; j< nb_secondes; ++j){
+          racer->refresh_traveled_ditance();
+        }
+
+      std::cout << "Après " << i*nb_secondes << " secondes, la vitesse de " << racer->WhatAmI() << " est de "
+                                << racer->speed() << "m/s. Il a parcouru " << racer->traveled_ditance() << "m." << std::endl;
       if (racer->speed() > longest_distance) {
         gagnant = racer->WhatAmI();
         longest_distance = racer->speed();
