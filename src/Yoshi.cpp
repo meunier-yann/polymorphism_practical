@@ -8,7 +8,7 @@ std::string Yoshi::WhatAmI() const { //on override WhatAmI()
 
 
 void Yoshi::Accelerate(){
-  if (speed_ < max_speed_ - 1){
+  if (speed_ < max_speed_ - 2){
     speed_ = speed_ + 2;
   }
   else if (speed_ < max_speed_){
