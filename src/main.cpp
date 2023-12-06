@@ -185,6 +185,7 @@ void advanced_race(){
   Players.insert(std::pair<int, std::string>(2, " n' a rien pris."));
   Players.insert(std::pair<int, std::string>(3, " a le vent dans le dos."));
   Players.insert(std::pair<int, std::string>(4, " a trébuché."));
+  Players.insert(std::pair<int, std::string>(5, " a continué sa course sans problème."));
 
   std::vector<Character*> racers; //Ce sont des ptr pour permettre de garder les spécificités des sous-classes
   racers.push_back( new Yoshi);
@@ -228,7 +229,7 @@ void advanced_race(){
 
 void random_event(Character* ptr, int i, std::map<int, std::string> Players){
   srand (time(NULL)-i-int(ptr->WhatAmI()[0])); //on fait en sorte que chq perso ait son propre random_event à chq tour
-  int prob = rand() % 5;
+  int prob = rand() % 6;
   if (prob == 0 || prob == 3) {
     ptr->Accelerate ();
   }
