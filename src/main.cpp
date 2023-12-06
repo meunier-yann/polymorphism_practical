@@ -220,7 +220,7 @@ void advanced_race(){
     }
     sleep(3);
     std::cout << "----------------------------------------------" << std::endl;
-  } std::cout << "A l'issu de ces " << nb_tours*nb_secondes << "secondes de course, le gagnant est " << gagnant <<  '\n';
+  } std::cout << "A l'issu de ces " << nb_tours*nb_secondes << " secondes de course, le gagnant est " << gagnant <<  '\n';
 
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
     delete racer;
