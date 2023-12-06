@@ -236,5 +236,10 @@ void random_event(Character* ptr, int i, std::map<int, std::string> Players){
   else if (prob == 1 || prob == 4){
     ptr->Break ();
   } // si prob == 3 on veut que la vitesse reste la même
-  std::cout << ptr->WhatAmI() << Players[prob] << std::endl;
+  if (ptr->traveled_ditance() == 0){
+    std::cout << ptr->WhatAmI() << " n'a pas bougé."<< std::endl;
+  }
+  else {
+    std::cout << ptr->WhatAmI() << Players[prob] << std::endl;
+  }
 }
