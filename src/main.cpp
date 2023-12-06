@@ -7,6 +7,7 @@
 #include <time.h>
 #include<unistd.h>
 #include <map>
+#include "Luigi.h"
 //#include<windows.h>
 
 void test_create_character();
@@ -185,13 +186,11 @@ void advanced_race(){
   Players.insert(std::pair<int, std::string>(3, " a le vent dans le dos."));
   Players.insert(std::pair<int, std::string>(4, " a trébuché."));
 
-  Yoshi* y1 = new Yoshi;
-  Yoshi* y2 = new Yoshi (2);
-  Mario* m1 = new Mario();
   std::vector<Character*> racers; //Ce sont des ptr pour permettre de garder les spécificités des sous-classes
-  racers.push_back(y1);
-  racers.push_back(y2);
-  racers.push_back(m1);
+  racers.push_back( new Yoshi);
+  racers.push_back(new Yoshi (2));
+  racers.push_back(new Mario());
+  racers.push_back(new Luigi);
   float longest_distance = 0.0;
   std::string gagnant = "";
   int nb_secondes = 5;
