@@ -6,6 +6,7 @@
 #include <vector>
 #include <time.h>
 #include<unistd.h>
+#include <map>
 //#include<windows.h>
 
 void test_create_character();
@@ -21,7 +22,7 @@ void test_traveled_distance();
 void test_refresh_traveled_distance();
 void test_randomness();
 void advanced_race();
-void random_event(Character* ptr, int i);
+void random_event(Character* ptr, int i, std::map<int, std::string> Players);
 
 
 
@@ -176,6 +177,10 @@ void test_randomness(){
 }
 
 void advanced_race(){
+  std::map<int, std::string> Players;
+  Players.insert(std::pair<int, std::string>(0, " a pris un boost"));
+  Players.insert(std::pair<int, std::string>(1, " a pris une banane"));
+  Players.insert(std::pair<int, std::string>(2, " n' a rien pris"));
   Yoshi* y1 = new Yoshi;
   Yoshi* y2 = new Yoshi (2);
   Mario* m1 = new Mario();
@@ -194,7 +199,7 @@ void advanced_race(){
   sleep(3);
   for (int i = 1; i< 11; ++i){
      for (const auto& racer : racers) { //range-based
-      random_event(racer, i);
+      random_event(racer, i, Players);
       racer->refresh_traveled_ditance();
       std::cout << "Après " << i << " tour(s), la vitesse de " << racer->WhatAmI() << " est de "
                                 << racer->speed() << ", il a parcouru " << racer->traveled_ditance() << "m." << std::endl;
@@ -212,13 +217,14 @@ void advanced_race(){
   }
 }
 
-void random_event(Character* ptr, int i){
+void random_event(Character* ptr, int i, std::map<int, std::string> Players){
   srand (time(NULL)-i-int(ptr->WhatAmI()[0])); //on fait en sorte que chq perso ait son propre random_event à chq tour
-  int prob = rand() % 2;
+  int prob = rand() % 3;
   if (prob == 0) {
     ptr->Accelerate ();
   }
-  else {
+  else if (prob == 1){
     ptr->Break ();
-  }
+  } // si prob == 3 on veut que la vitesse reste la même
+  std::cout << ptr->WhatAmI() << Players[prob] << std::endl;
 }
