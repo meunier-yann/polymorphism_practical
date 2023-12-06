@@ -177,10 +177,14 @@ void test_randomness(){
 }
 
 void advanced_race(){
+  //création de la hash map avec les événements
   std::map<int, std::string> Players;
-  Players.insert(std::pair<int, std::string>(0, " a pris un boost"));
-  Players.insert(std::pair<int, std::string>(1, " a pris une banane"));
-  Players.insert(std::pair<int, std::string>(2, " n' a rien pris"));
+  Players.insert(std::pair<int, std::string>(0, " a pris un boost."));
+  Players.insert(std::pair<int, std::string>(1, " a pris une banane."));
+  Players.insert(std::pair<int, std::string>(2, " n' a rien pris."));
+  Players.insert(std::pair<int, std::string>(3, " a le vent dans le dos."));
+  Players.insert(std::pair<int, std::string>(4, " a trébuché."));
+
   Yoshi* y1 = new Yoshi;
   Yoshi* y2 = new Yoshi (2);
   Mario* m1 = new Mario();
@@ -225,11 +229,11 @@ void advanced_race(){
 
 void random_event(Character* ptr, int i, std::map<int, std::string> Players){
   srand (time(NULL)-i-int(ptr->WhatAmI()[0])); //on fait en sorte que chq perso ait son propre random_event à chq tour
-  int prob = rand() % 3;
-  if (prob == 0) {
+  int prob = rand() % 5;
+  if (prob == 0 || prob == 3) {
     ptr->Accelerate ();
   }
-  else if (prob == 1){
+  else if (prob == 1 || prob == 4){
     ptr->Break ();
   } // si prob == 3 on veut que la vitesse reste la même
   std::cout << ptr->WhatAmI() << Players[prob] << std::endl;
