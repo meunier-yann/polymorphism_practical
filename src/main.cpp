@@ -215,7 +215,7 @@ void advanced_race(){
                                 << racer->speed() << "m/s. Il a parcouru " << racer->traveled_ditance() << "m." << std::endl;
       if (racer->speed() > longest_distance) {
         gagnant = racer->WhatAmI();
-        longest_distance = racer->speed();
+        longest_distance = racer->traveled_ditance();
       }
     }
     sleep(3);
