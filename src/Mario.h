@@ -13,8 +13,9 @@ class Mario : public Character{
     Mario& operator=(Mario&&) = delete;
 
     Mario() = default;
-    virtual ~Mario() = default; 
+    virtual ~Mario() = default;
     std::string WhatAmI() const override; //on override WhatAmI()
+    void Break() override;
 };
 
 
