@@ -192,6 +192,7 @@ void advanced_race(){
   racers.push_back(new Yoshi (2));
   racers.push_back(new Mario());
   racers.push_back(new Luigi);
+
   float longest_distance = 0.0;
   std::string gagnant = "";
   int nb_secondes = 5;
@@ -213,7 +214,7 @@ void advanced_race(){
 
       std::cout << "Après " << i*nb_secondes << " secondes, la vitesse de " << racer->WhatAmI() << " est de "
                                 << racer->speed() << "m/s. Il a parcouru " << racer->traveled_ditance() << "m." << std::endl;
-      if (racer->speed() > longest_distance) {
+      if (racer->traveled_ditance() > longest_distance) {
         gagnant = racer->WhatAmI();
         longest_distance = racer->traveled_ditance();
       }
