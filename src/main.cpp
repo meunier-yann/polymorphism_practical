@@ -202,9 +202,8 @@ void advanced_race(){
   std::vector<Character*> racers; //Ce sont des ptr pour permettre de garder les spécificités des sous-classes
   character_selection(racers);
 
+  sleep(nb_secondes); //pour rendre l'affichage + lisible on attend avant de lancer la courses
 
-
-  sleep(nb_secondes);
   for (int i = 1; i< nb_tours+1; ++i){
      for (const auto& racer : racers) { //range-based
       random_event(racer, i, Players);
@@ -220,9 +219,12 @@ void advanced_race(){
         longest_distance = racer->traveled_ditance();
       }
     }
-    sleep(3);
+
+    sleep(nb_secondes); //pour rendre l'affichage + lisible on attend avant de montrer les évenenements des 5 prochaines secondes
+
     std::cout << "----------------------------------------------" << std::endl;
-  } std::cout << "A l'issu de ces " << nb_tours*nb_secondes << " secondes de course, le gagnant est " << gagnant <<  '\n';
+  }
+  std::cout << "A l'issu de ces " << nb_tours*nb_secondes << " secondes de course, le gagnant est " << gagnant <<  '\n';
 
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
     delete racer;
