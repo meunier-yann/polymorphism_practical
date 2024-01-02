@@ -249,5 +249,36 @@ void random_event(Character* ptr, int i, std::map<int, std::string> Players){
 
 
 void character_selection(){
+  std::vector<Character*> racers;
+  int crest_nb = 0;
+  int nb_persos = 5;
+  std::string inputChar = "rien";
+  for (int i = 0; i<nb_persos; ++i) {
+    do {
+      std::cout << "Entrez le nom d'un personnage (Mario/Yoshi/Luigi)" << std::endl;
+      std::cin >> inputChar;
+    } while( inputChar!= "Mario" && inputChar!= "Luigi" && inputChar!= "Yoshi");
+    if (inputChar == "Yoshi"){
+      std::cout << "Selectionnez le nombre de crêtes"<<std::endl;
+      std::cin >> crest_nb;
+      racers.push_back(new Yoshi (crest_nb));
+    }
+    if (inputChar == "Mario"){
+      racers.push_back(new Mario);
+    }
+    if (inputChar == "Luigi"){
+      racers.push_back(new Luigi);
+    }
+    std::string inputChar = "rien"; //reset
+  }
+  std::cout << "Les coureurs sont:" << std::endl;
+  for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
+    std::cout << racer->WhatAmI() << std::endl;
+  }
+  std::cout << "----------------------------------------------" << std::endl;
+
+  for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
+    delete racer;
+  }
 
 }
