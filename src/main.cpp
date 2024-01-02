@@ -24,6 +24,7 @@ void test_refresh_traveled_distance();
 void test_randomness();
 void advanced_race();
 void random_event(Character* ptr, int i, std::map<int, std::string> Players);
+void character_selection();
 
 
 
@@ -43,7 +44,8 @@ int main (){
   //BONUS
   // test_traveled_distance();
   // test_refresh_traveled_distance();
-  advanced_race();
+  //advanced_race();
+  character_selection();
   return EXIT_SUCCESS;
 }
 
@@ -243,4 +245,9 @@ void random_event(Character* ptr, int i, std::map<int, std::string> Players){
   else {
     std::cout << ptr->WhatAmI() << Players[prob] << std::endl;
   }
+}
+
+
+void character_selection(){
+
 }
