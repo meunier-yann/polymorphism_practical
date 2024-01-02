@@ -24,7 +24,7 @@ void test_refresh_traveled_distance();
 void test_randomness();
 void advanced_race();
 void random_event(Character* ptr, int i, std::map<int, std::string> Players);
-void character_selection();
+void character_selection(std::vector<Character*>& racers);
 
 
 
@@ -44,8 +44,9 @@ int main (){
   //BONUS
   // test_traveled_distance();
   // test_refresh_traveled_distance();
-  //advanced_race();
-  character_selection();
+  //character_selection(); obsolète maintenant
+  advanced_race();
+
   return EXIT_SUCCESS;
 }
 
@@ -180,6 +181,15 @@ void test_randomness(){
 }
 
 void advanced_race(){
+  //creation des attributs pour trouver et afficher le gagnant
+  float longest_distance = 0.0;
+  std::string gagnant = "";
+
+  //Définition des conditions de la course
+  int nb_secondes = 5;
+  int nb_tours = 10;
+
+
   //création de la hash map avec les événements
   std::map<int, std::string> Players;
   Players.insert(std::pair<int, std::string>(0, " a pris un boost."));
@@ -190,21 +200,10 @@ void advanced_race(){
   Players.insert(std::pair<int, std::string>(5, " a continué sa course sans problème."));
 
   std::vector<Character*> racers; //Ce sont des ptr pour permettre de garder les spécificités des sous-classes
-  racers.push_back( new Yoshi);
-  racers.push_back(new Yoshi (2));
-  racers.push_back(new Mario());
-  racers.push_back(new Luigi);
+  character_selection(racers);
 
-  float longest_distance = 0.0;
-  std::string gagnant = "";
-  int nb_secondes = 5;
-  int nb_tours = 10;
 
-  std::cout << "Les coureurs sont:" << std::endl;
-  for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
-    std::cout << racer->WhatAmI() << std::endl;
-  }
-  std::cout << "----------------------------------------------" << std::endl;
+
   sleep(nb_secondes);
   for (int i = 1; i< nb_tours+1; ++i){
      for (const auto& racer : racers) { //range-based
@@ -248,8 +247,7 @@ void random_event(Character* ptr, int i, std::map<int, std::string> Players){
 }
 
 
-void character_selection(){
-  std::vector<Character*> racers;
+void character_selection(std::vector<Character*>& racers){
   int crest_nb = 0;
   int nb_persos = 5;
   std::string inputChar = "rien";
@@ -271,14 +269,10 @@ void character_selection(){
     }
     std::string inputChar = "rien"; //reset
   }
+  std::cout << "----------------------------------------------" << std::endl;
   std::cout << "Les coureurs sont:" << std::endl;
   for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
     std::cout << racer->WhatAmI() << std::endl;
   }
   std::cout << "----------------------------------------------" << std::endl;
-
-  for (const auto& racer : racers) { //on delete les pointeurs pour ne pas avoir de leaks
-    delete racer;
-  }
-
 }
