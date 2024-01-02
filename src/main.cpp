@@ -249,7 +249,11 @@ void random_event(Character* ptr, int i, std::map<int, std::string> Players){
 
 void character_selection(std::vector<Character*>& racers){
   int crest_nb = 0;
-  int nb_persos = 5;
+  int nb_persos = 0;
+  while (nb_persos <= 1 || nb_persos > 10) {
+    std::cout<<"Combien de personnages voulez-vous ? (2-10)"<<std::endl;
+    std::cin >> nb_persos;
+  }
   std::string inputChar = "rien";
   for (int i = 0; i<nb_persos; ++i) {
     do {
